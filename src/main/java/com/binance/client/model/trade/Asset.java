@@ -7,6 +7,13 @@ import java.math.BigDecimal;
 
 public class Asset {
 
+    /*
+            "crossWalletBalance": "0.00000000",
+            "crossUnPnl": "0.00000000",
+            "availableBalance": "0.00000000",
+            "marginAvailable": true,
+            "updateTime": 0*/
+
     private String asset;
 
     private BigDecimal initialMargin;
@@ -22,6 +29,19 @@ public class Asset {
     private BigDecimal positionInitialMargin;
 
     private BigDecimal unrealizedProfit;
+
+    private BigDecimal walletBalance;
+
+    private BigDecimal crossWalletBalance;
+
+    private BigDecimal crossUnPnl;
+
+    private BigDecimal availableBalance;
+
+    private BigDecimal marginAvailable;
+
+    private long updateTime;
+
 
     public String getAsset() {
         return asset;
@@ -87,13 +107,73 @@ public class Asset {
         this.unrealizedProfit = unrealizedProfit;
     }
 
+    public BigDecimal getWalletBalance() {
+        return walletBalance;
+    }
+
+    public void setWalletBalance(BigDecimal walletBalance) {
+        this.walletBalance = walletBalance;
+    }
+
+    public BigDecimal getCrossWalletBalance() {
+        return crossWalletBalance;
+    }
+
+    public void setCrossWalletBalance(BigDecimal crossWalletBalance) {
+        this.crossWalletBalance = crossWalletBalance;
+    }
+
+    public BigDecimal getCrossUnPnl() {
+        return crossUnPnl;
+    }
+
+    public void setCrossUnPnl(BigDecimal crossUnPnl) {
+        this.crossUnPnl = crossUnPnl;
+    }
+
+    public BigDecimal getAvailableBalance() {
+        return availableBalance;
+    }
+
+    public void setAvailableBalance(BigDecimal availableBalance) {
+        this.availableBalance = availableBalance;
+    }
+
+    public BigDecimal getMarginAvailable() {
+        return marginAvailable;
+    }
+
+    public void setMarginAvailable(BigDecimal marginAvailable) {
+        this.marginAvailable = marginAvailable;
+    }
+
+    public long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(long updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE).append("asset", asset)
-                .append("initialMargin", initialMargin).append("maintMargin", maintMargin)
-                .append("marginBalance", marginBalance).append("maxWithdrawAmount", maxWithdrawAmount)
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("asset", asset)
+                .append("initialMargin", initialMargin)
+                .append("maintMargin", maintMargin)
+                .append("marginBalance", marginBalance)
+                .append("maxWithdrawAmount", maxWithdrawAmount)
                 .append("openOrderInitialMargin", openOrderInitialMargin)
-                .append("positionInitialMargin", positionInitialMargin).append("unrealizedProfit", unrealizedProfit)
+                .append("positionInitialMargin", positionInitialMargin)
+                .append("unrealizedProfit", unrealizedProfit)
+                .append("walletBalance", walletBalance)
+                .append("crossWalletBalance", crossWalletBalance)
+                .append("crossUnPnl", crossUnPnl)
+                .append("availableBalance", availableBalance)
+                .append("marginAvailable", marginAvailable)
+                .append("updateTime", updateTime)
                 .toString();
     }
+
+
 }
