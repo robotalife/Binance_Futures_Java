@@ -1,15 +1,12 @@
-//package com.binance.client.examples.market;
-//
-//import com.binance.client.BinanceFuturesRestClient;
-//
-//import com.binance.client.examples.constants.PrivateConfig;
-//
-//public class GetSymbolPriceTicker {
-//    public static void main(String[] args) {
-//        RequestOptions options = new RequestOptions();
-//        BinanceFuturesRestClient binanceFuturesRestClient = BinanceFuturesRestClient.create(PrivateConfig.API_KEY, PrivateConfig.SECRET_KEY,
-//                options);
-//        System.out.println(binanceFuturesRestClient.getSymbolPriceTicker("BTCUSDT"));
-//        // System.out.println(syncRequestClient.getSymbolPriceTicker(null));
-//    }
-//}
+package com.binance.client.examples.market;
+
+import com.binance.client.BinanceFuturesApiClientFactory;
+import com.binance.client.BinanceFuturesRestClient;
+
+public class GetSymbolPriceTicker {
+    public static void main(String[] args) {
+        BinanceFuturesRestClient client = BinanceFuturesApiClientFactory.newInstance().newRestClient();
+        System.out.println(client.getSymbolPriceTicker("BTCUSDT"));
+        System.out.println(client.getSymbolPriceTicker());
+    }
+}

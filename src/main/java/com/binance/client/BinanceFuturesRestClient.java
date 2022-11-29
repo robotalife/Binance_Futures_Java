@@ -1,7 +1,11 @@
 package com.binance.client;
 
 import com.binance.client.model.market.ExchangeInformation;
+import com.binance.client.model.market.PriceChangeTicker;
+import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
+
+import java.util.List;
 
 /**
  * Synchronous request interface, invoking Binance RestAPI via synchronous
@@ -55,6 +59,7 @@ public interface BinanceFuturesRestClient {
 //     */
 //    List<Candlestick> getCandlestick(String symbol, CandlestickInterval interval, Long startTime, Long endTime, Integer limit);
 //
+
 //    /**
 //     * Get mark price for a symbol.
 //     *
@@ -69,19 +74,35 @@ public interface BinanceFuturesRestClient {
 //     */
 //    List<FundingRate> getFundingRate(String symbol, Long startTime, Long endTime, Integer limit);
 //
-//    /**
-//     * Get 24 hour rolling window price change statistics.
-//     *
-//     * @return 24 hour rolling window price change statistics.
-//     */
-//    List<PriceChangeTicker> get24hrTickerPriceChange(String symbol);
-//
-//    /**
-//     * Get latest price for a symbol or symbols.
-//     *
-//     * @return Latest price for a symbol or symbols.
-//     */
-//    List<SymbolPrice> getSymbolPriceTicker(String symbol);
+
+    /**
+     * Get 24 hour rolling window price change statistics.
+     *
+     * @return 24 hour rolling window price change statistics.
+     */
+    List<PriceChangeTicker> get24hrTickerPriceChange();
+
+    /**
+     * Get 24 hour rolling window price change statistics.
+     *
+     * @return 24 hour rolling window price change statistics.
+     */
+    PriceChangeTicker get24hrTickerPriceChange(String symbol);
+
+    /**
+     * Get latest price for a symbol or symbols.
+     *
+     * @return Latest price for a symbol or symbols.
+     */
+    List<SymbolPrice> getSymbolPriceTicker();
+
+
+    /**
+     * Get latest price for a symbol or symbols.
+     *
+     * @return Latest price for a symbol or symbols.
+     */
+    SymbolPrice getSymbolPriceTicker(String symbol);
 //
 //    /**
 //     * Get best price/qty on the order book for a symbol or symbols.
@@ -104,14 +125,15 @@ public interface BinanceFuturesRestClient {
 //     */
 //    List<Object> postBatchOrders(String batchOrders);
 //
+
 //    /**
 //     * Send in a new order.
 //     *
 //     * @return Order.
 //     */
 //    Order postOrder(String symbol, OrderSide side, PositionSide positionSide, OrderType orderType,
-//            TimeInForce timeInForce, String quantity, String price, String reduceOnly,
-//            String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType);
+//                    TimeInForce timeInForce, String quantity, String price, String reduceOnly,
+//                    String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType);
 //
 //    /**
 //     * Cancel an active order.

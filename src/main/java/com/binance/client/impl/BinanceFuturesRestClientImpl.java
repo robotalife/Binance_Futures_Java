@@ -2,7 +2,11 @@ package com.binance.client.impl;
 
 import com.binance.client.BinanceFuturesRestClient;
 import com.binance.client.model.market.ExchangeInformation;
+import com.binance.client.model.market.PriceChangeTicker;
+import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
+
+import java.util.List;
 
 import static com.binance.client.impl.BinanceFuturesApiServiceGenerator.createService;
 
@@ -57,16 +61,27 @@ public class BinanceFuturesRestClientImpl implements BinanceFuturesRestClient {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getFundingRate(symbol, startTime, endTime, limit));
 //    }
 //
-//    @Override
-//    public List<PriceChangeTicker> get24hrTickerPriceChange(String symbol) {
-//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.get24hrTickerPriceChange(symbol));
-//    }
-//
-//    @Override
-//    public List<SymbolPrice> getSymbolPriceTicker(String symbol) {
-//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getSymbolPriceTicker(symbol));
-//    }
-//
+    @Override
+    public List<PriceChangeTicker> get24hrTickerPriceChange() {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.get24hrTickerPriceChange());
+    }
+
+    @Override
+    public PriceChangeTicker get24hrTickerPriceChange(String symbol) {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.get24hrTickerPriceChange(symbol));
+    }
+
+    @Override
+    public List<SymbolPrice> getSymbolPriceTicker() {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getSymbolPriceTicker());
+    }
+
+    @Override
+    public SymbolPrice getSymbolPriceTicker(String symbol) {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getSymbolPriceTicker(symbol));
+    }
+
+    //
 //    @Override
 //    public List<SymbolOrderBook> getSymbolOrderBookTicker(String symbol) {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getSymbolOrderBookTicker(symbol));

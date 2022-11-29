@@ -1,33 +1,32 @@
 package com.binance.client.model.market;
 
-import com.binance.client.impl.constant.BinanceApiConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.math.BigDecimal;
 
 public class PriceChangeTicker {
 
     private String symbol;
 
-    private BigDecimal priceChange;
+    private String priceChange;
 
-    private BigDecimal priceChangePercent;
+    private String priceChangePercent;
 
-    private BigDecimal weightedAvgPrice;
+    private String weightedAvgPrice;
 
-    private BigDecimal lastPrice;
+    private String lastPrice;
 
-    private BigDecimal lastQty;
+    private String lastQty;
 
-    private BigDecimal openPrice;
+    private String openPrice;
 
-    private BigDecimal highPrice;
+    private String highPrice;
 
-    private BigDecimal lowPrice;
+    private String lowPrice;
 
-    private BigDecimal volume;
+    private String volume;
 
-    private BigDecimal quoteVolume;
+    private String quoteVolume;
 
     private Long openTime;
 
@@ -47,83 +46,83 @@ public class PriceChangeTicker {
         this.symbol = symbol;
     }
 
-    public BigDecimal getPriceChange() {
+    public String getPriceChange() {
         return priceChange;
     }
 
-    public void setPriceChange(BigDecimal priceChange) {
+    public void setPriceChange(String priceChange) {
         this.priceChange = priceChange;
     }
 
-    public BigDecimal getPriceChangePercent() {
+    public String getPriceChangePercent() {
         return priceChangePercent;
     }
 
-    public void setPriceChangePercent(BigDecimal priceChangePercent) {
+    public void setPriceChangePercent(String priceChangePercent) {
         this.priceChangePercent = priceChangePercent;
     }
 
-    public BigDecimal getWeightedAvgPrice() {
+    public String getWeightedAvgPrice() {
         return weightedAvgPrice;
     }
 
-    public void setWeightedAvgPrice(BigDecimal weightedAvgPrice) {
+    public void setWeightedAvgPrice(String weightedAvgPrice) {
         this.weightedAvgPrice = weightedAvgPrice;
     }
 
-    public BigDecimal getLastPrice() {
+    public String getLastPrice() {
         return lastPrice;
     }
 
-    public void setLastPrice(BigDecimal lastPrice) {
+    public void setLastPrice(String lastPrice) {
         this.lastPrice = lastPrice;
     }
 
-    public BigDecimal getLastQty() {
+    public String getLastQty() {
         return lastQty;
     }
 
-    public void setLastQty(BigDecimal lastQty) {
+    public void setLastQty(String lastQty) {
         this.lastQty = lastQty;
     }
 
-    public BigDecimal getOpenPrice() {
+    public String getOpenPrice() {
         return openPrice;
     }
 
-    public void setOpenPrice(BigDecimal openPrice) {
+    public void setOpenPrice(String openPrice) {
         this.openPrice = openPrice;
     }
 
-    public BigDecimal getHighPrice() {
+    public String getHighPrice() {
         return highPrice;
     }
 
-    public void setHighPrice(BigDecimal highPrice) {
+    public void setHighPrice(String highPrice) {
         this.highPrice = highPrice;
     }
 
-    public BigDecimal getLowPrice() {
+    public String getLowPrice() {
         return lowPrice;
     }
 
-    public void setLowPrice(BigDecimal lowPrice) {
+    public void setLowPrice(String lowPrice) {
         this.lowPrice = lowPrice;
     }
 
-    public BigDecimal getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(BigDecimal volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
-    public BigDecimal getQuoteVolume() {
+    public String getQuoteVolume() {
         return quoteVolume;
     }
 
-    public void setQuoteVolume(BigDecimal quoteVolume) {
+    public void setQuoteVolume(String quoteVolume) {
         this.quoteVolume = quoteVolume;
     }
 
@@ -169,12 +168,23 @@ public class PriceChangeTicker {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE).append("symbol", symbol)
-                .append("priceChange", priceChange).append("priceChangePercent", priceChangePercent)
-                .append("weightedAvgPrice", weightedAvgPrice).append("lastPrice", lastPrice).append("lastQty", lastQty)
-                .append("openPrice", openPrice).append("highPrice", highPrice).append("lowPrice", lowPrice)
-                .append("volume", volume).append("quoteVolume", quoteVolume).append("openTime", openTime)
-                .append("closeTime", closeTime).append("firstId", firstId).append("lastId", lastId)
-                .append("count", count).toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
+                .append("symbol", symbol)
+                .append("priceChange", priceChange)
+                .append("priceChangePercent", priceChangePercent)
+                .append("weightedAvgPrice", weightedAvgPrice)
+                .append("lastPrice", lastPrice)
+                .append("lastQty", lastQty)
+                .append("openPrice", openPrice)
+                .append("highPrice", highPrice)
+                .append("lowPrice", lowPrice)
+                .append("volume", volume)
+                .append("quoteVolume", quoteVolume)
+                .append("openTime", openTime)
+                .append("closeTime", closeTime)
+                .append("firstId", firstId)
+                .append("lastId", lastId)
+                .append("count", count)
+                .toString();
     }
 }
