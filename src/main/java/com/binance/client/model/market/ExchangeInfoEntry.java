@@ -1,14 +1,39 @@
 package com.binance.client.model.market;
 
-import com.binance.client.constant.BinanceApiConstants;
+import com.binance.client.impl.constant.BinanceApiConstants;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.List;
-import java.util.Map;
-
 import java.math.BigDecimal;
+import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ExchangeInfoEntry {
+    /**
+     * "pair": "BTCUSDT",
+     * "contractType": "PERPETUAL",
+     * "deliveryDate": 4133404800000,
+     * "onboardDate": 1569398400000,
+     * "status": "TRADING",
+     * "maintMarginPercent": "2.5000",
+     * "requiredMarginPercent": "5.0000",
+     * "baseAsset": "BTC",
+     * "quoteAsset": "USDT",
+     * "marginAsset": "USDT",
+     * "pricePrecision": 2,
+     * "quantityPrecision": 3,
+     * "baseAssetPrecision": 8,
+     * "quotePrecision": 8,
+     * "underlyingType": "COIN",
+     * "underlyingSubType": [
+     * "PoW"
+     * ],
+     * "settlePlan": 0,
+     * "triggerProtect": "0.0500",
+     * "liquidationFee": "0.017500",
+     * "marketTakeBound": "0.05",
+     * "filters": [
+     */
 
     private String symbol;
 
@@ -34,7 +59,7 @@ public class ExchangeInfoEntry {
 
     private List<String> timeInForce;
 
-    private List<List<Map<String, String>>> filters;
+    private List<SymbolFilter> filters;
 
     public String getSymbol() {
         return symbol;
@@ -132,11 +157,11 @@ public class ExchangeInfoEntry {
         this.timeInForce = timeInForce;
     }
 
-    public List<List<Map<String, String>>> getFilters() {
+    public List<SymbolFilter> getFilters() {
         return filters;
     }
 
-    public void setFilters(List<List<Map<String, String>>> filters) {
+    public void setFilters(List<SymbolFilter> filters) {
         this.filters = filters;
     }
 

@@ -1,27 +1,25 @@
 package com.binance.client.model.trade;
 
-import com.binance.client.constant.BinanceApiConstants;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.math.BigDecimal;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Position {
 
     private Boolean isolated;
 
-    private BigDecimal leverage;
+    private String leverage;
 
-    private BigDecimal initialMargin;
+    private String initialMargin;
 
-    private BigDecimal maintMargin;
+    private String maintMargin;
 
-    private BigDecimal openOrderInitialMargin;
+    private String openOrderInitialMargin;
 
-    private BigDecimal positionInitialMargin;
+    private String positionInitialMargin;
 
     private String symbol;
 
-    private BigDecimal unrealizedProfit;
+    private String unrealizedProfit;
 
     private String entryPrice;
 
@@ -37,43 +35,43 @@ public class Position {
         this.isolated = isolated;
     }
 
-    public BigDecimal getLeverage() {
+    public String getLeverage() {
         return leverage;
     }
 
-    public void setLeverage(BigDecimal leverage) {
+    public void setLeverage(String leverage) {
         this.leverage = leverage;
     }
 
-    public BigDecimal getInitialMargin() {
+    public String getInitialMargin() {
         return initialMargin;
     }
 
-    public void setInitialMargin(BigDecimal initialMargin) {
+    public void setInitialMargin(String initialMargin) {
         this.initialMargin = initialMargin;
     }
 
-    public BigDecimal getMaintMargin() {
+    public String getMaintMargin() {
         return maintMargin;
     }
 
-    public void setMaintMargin(BigDecimal maintMargin) {
+    public void setMaintMargin(String maintMargin) {
         this.maintMargin = maintMargin;
     }
 
-    public BigDecimal getOpenOrderInitialMargin() {
+    public String getOpenOrderInitialMargin() {
         return openOrderInitialMargin;
     }
 
-    public void setOpenOrderInitialMargin(BigDecimal openOrderInitialMargin) {
+    public void setOpenOrderInitialMargin(String openOrderInitialMargin) {
         this.openOrderInitialMargin = openOrderInitialMargin;
     }
 
-    public BigDecimal getPositionInitialMargin() {
+    public String getPositionInitialMargin() {
         return positionInitialMargin;
     }
 
-    public void setPositionInitialMargin(BigDecimal positionInitialMargin) {
+    public void setPositionInitialMargin(String positionInitialMargin) {
         this.positionInitialMargin = positionInitialMargin;
     }
 
@@ -85,11 +83,11 @@ public class Position {
         this.symbol = symbol;
     }
 
-    public BigDecimal getUnrealizedProfit() {
+    public String getUnrealizedProfit() {
         return unrealizedProfit;
     }
 
-    public void setUnrealizedProfit(BigDecimal unrealizedProfit) {
+    public void setUnrealizedProfit(String unrealizedProfit) {
         this.unrealizedProfit = unrealizedProfit;
     }
 
@@ -119,12 +117,18 @@ public class Position {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
-                .append("initialMargin", initialMargin).append("maintMargin", maintMargin)
-                .append("openOrderInitialMargin", openOrderInitialMargin)
-                .append("positionInitialMargin", positionInitialMargin).append("symbol", symbol)
-                .append("unrealizedProfit", unrealizedProfit).append("entryPrice", entryPrice)
-                .append("maxNotional", maxNotional).append("positionSide", positionSide)
-                .append("isolated", isolated).toString();
+        return "Position{" +
+                "isolated=" + isolated +
+                ", leverage='" + leverage + '\'' +
+                ", initialMargin='" + initialMargin + '\'' +
+                ", maintMargin='" + maintMargin + '\'' +
+                ", openOrderInitialMargin='" + openOrderInitialMargin + '\'' +
+                ", positionInitialMargin='" + positionInitialMargin + '\'' +
+                ", symbol='" + symbol + '\'' +
+                ", unrealizedProfit='" + unrealizedProfit + '\'' +
+                ", entryPrice='" + entryPrice + '\'' +
+                ", maxNotional='" + maxNotional + '\'' +
+                ", positionSide='" + positionSide + '\'' +
+                '}';
     }
 }

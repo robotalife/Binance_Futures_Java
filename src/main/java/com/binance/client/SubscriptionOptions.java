@@ -1,6 +1,7 @@
 package com.binance.client;
 
 import com.binance.client.exception.BinanceApiException;
+
 import java.net.URI;
 
 /**
@@ -33,7 +34,7 @@ public class SubscriptionOptions {
             URI u = new URI(uri);
             this.uri = u.toString();
         } catch (Exception e) {
-            throw new BinanceApiException(BinanceApiException.INPUT_ERROR, "The URI is incorrect: " + e.getMessage());
+            throw new BinanceApiException("The URI is incorrect: " + e.getMessage());
         }
         this.uri = uri;
     }

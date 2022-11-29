@@ -1,4 +1,4 @@
-package com.binance.client.constant;
+package com.binance.client.impl.constant;
 
 import org.apache.commons.lang3.builder.ToStringStyle;
 

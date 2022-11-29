@@ -1,15 +1,17 @@
 package com.binance.client.model.market;
 
-import com.binance.client.constant.BinanceApiConstants;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ExchangeInformation {
 
     private String timezone;
 
     private Long serverTime;
+
+    private String futuresType;
 
     private List<RateLimit> rateLimits;
 
@@ -57,10 +59,23 @@ public class ExchangeInformation {
         this.symbols = symbols;
     }
 
+    public String getFuturesType() {
+        return futuresType;
+    }
+
+    public void setFuturesType(String futuresType) {
+        this.futuresType = futuresType;
+    }
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE).append("timezone", timezone)
-                .append("serverTime", serverTime).append("rateLimits", rateLimits)
-                .append("exchangeFilters", exchangeFilters).append("symbols", symbols).toString();
+        return "ExchangeInformation{" +
+                "timezone='" + timezone + '\'' +
+                ", serverTime=" + serverTime +
+                ", futuresType='" + futuresType + '\'' +
+                ", rateLimits=" + rateLimits +
+                ", exchangeFilters=" + exchangeFilters +
+                ", symbols=" + symbols +
+                '}';
     }
 }

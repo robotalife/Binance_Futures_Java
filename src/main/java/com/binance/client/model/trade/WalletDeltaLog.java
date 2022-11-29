@@ -1,6 +1,6 @@
 package com.binance.client.model.trade;
 
-import com.binance.client.constant.BinanceApiConstants;
+import com.binance.client.impl.constant.BinanceApiConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**

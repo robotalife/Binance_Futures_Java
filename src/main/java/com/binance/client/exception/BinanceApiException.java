@@ -1,31 +1,74 @@
 package com.binance.client.exception;
 
+import com.binance.client.BinanceApiError;
+
+/**
+ * An exception which can occur while invoking methods of the Binance API.
+ */
 public class BinanceApiException extends RuntimeException {
 
+    private static final long serialVersionUID = 3788669840036201041L;
     /**
-     *
+     * Error response object returned by Binance API.
      */
-    private static final long serialVersionUID = 4360108982268949009L;
-    public static final String RUNTIME_ERROR = "RuntimeError";
-    public static final String INPUT_ERROR = "InputError";
-    public static final String KEY_MISSING = "KeyMissing";
-    public static final String SYS_ERROR = "SysError";
-    public static final String SUBSCRIPTION_ERROR = "SubscriptionError";
-    public static final String ENV_ERROR = "EnvironmentError";
-    public static final String EXEC_ERROR = "ExecuteError";
-    private final String errCode;
+    private BinanceApiError error;
 
-    public BinanceApiException(String errType, String errMsg) {
-        super(errMsg);
-        this.errCode = errType;
+    /**
+     * Instantiates a new binance api exception.
+     *
+     * @param error an error response object
+     */
+    public BinanceApiException(BinanceApiError error) {
+        this.error = error;
     }
 
-    public BinanceApiException(String errType, String errMsg, Throwable e) {
-        super(errMsg, e);
-        this.errCode = errType;
+    /**
+     * Instantiates a new binance api exception.
+     */
+    public BinanceApiException() {
+        super();
     }
 
-    public String getErrType() {
-        return this.errCode;
+    /**
+     * Instantiates a new binance api exception.
+     *
+     * @param message the message
+     */
+    public BinanceApiException(String message) {
+        super(message);
+    }
+
+    /**
+     * Instantiates a new binance api exception.
+     *
+     * @param cause the cause
+     */
+    public BinanceApiException(Throwable cause) {
+        super(cause);
+    }
+
+    /**
+     * Instantiates a new binance api exception.
+     *
+     * @param message the message
+     * @param cause   the cause
+     */
+    public BinanceApiException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    /**
+     * @return the response error object from Binance API, or null if no response object was returned (e.g. server returned 500).
+     */
+    public BinanceApiError getError() {
+        return error;
+    }
+
+    @Override
+    public String getMessage() {
+        if (error != null) {
+            return error.getMsg();
+        }
+        return super.getMessage();
     }
 }
