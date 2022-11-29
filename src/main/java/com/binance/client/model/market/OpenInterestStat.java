@@ -1,5 +1,8 @@
 package com.binance.client.model.market;
 
+import com.binance.client.impl.constant.BinanceApiConstants;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.math.BigDecimal;
 
 public class OpenInterestStat {
@@ -43,11 +46,11 @@ public class OpenInterestStat {
 
     @Override
     public String toString() {
-        return "OpenInterestStat{" +
-                "symbol='" + symbol + '\'' +
-                ", sumOpenInterest=" + sumOpenInterest +
-                ", sumOpenInterestValue=" + sumOpenInterestValue +
-                ", timestamp=" + timestamp +
-                '}';
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("symbol", symbol)
+                .append("sumOpenInterest", sumOpenInterest)
+                .append("sumOpenInterestValue", sumOpenInterestValue)
+                .append("timestamp", timestamp)
+                .toString();
     }
 }

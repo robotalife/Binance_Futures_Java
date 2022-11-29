@@ -1,6 +1,8 @@
 package com.binance.client.model.market;
 
+import com.binance.client.impl.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -69,13 +71,13 @@ public class ExchangeInformation {
 
     @Override
     public String toString() {
-        return "ExchangeInformation{" +
-                "timezone='" + timezone + '\'' +
-                ", serverTime=" + serverTime +
-                ", futuresType='" + futuresType + '\'' +
-                ", rateLimits=" + rateLimits +
-                ", exchangeFilters=" + exchangeFilters +
-                ", symbols=" + symbols +
-                '}';
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("timezone", timezone)
+                .append("serverTime", serverTime)
+                .append("futuresType", futuresType)
+                .append("rateLimits", rateLimits)
+                .append("exchangeFilters", exchangeFilters)
+                .append("symbols", symbols)
+                .toString();
     }
 }

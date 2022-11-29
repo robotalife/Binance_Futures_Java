@@ -1,5 +1,8 @@
 package com.binance.client.model.market;
 
+import com.binance.client.impl.constant.BinanceApiConstants;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.math.BigDecimal;
 
 public class TakerLongShortStat {
@@ -43,11 +46,11 @@ public class TakerLongShortStat {
 
     @Override
     public String toString() {
-        return "TakerLongShortStat{" +
-                "buySellRatio=" + buySellRatio +
-                ", sellVol=" + sellVol +
-                ", buyVol=" + buyVol +
-                ", timestamp=" + timestamp +
-                '}';
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("buySellRatio", buySellRatio)
+                .append("sellVol", sellVol)
+                .append("buyVol", buyVol)
+                .append("timestamp", timestamp)
+                .toString();
     }
 }

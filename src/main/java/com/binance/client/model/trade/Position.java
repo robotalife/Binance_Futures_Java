@@ -1,6 +1,8 @@
 package com.binance.client.model.trade;
 
+import com.binance.client.impl.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Position {
@@ -117,18 +119,18 @@ public class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
-                "isolated=" + isolated +
-                ", leverage='" + leverage + '\'' +
-                ", initialMargin='" + initialMargin + '\'' +
-                ", maintMargin='" + maintMargin + '\'' +
-                ", openOrderInitialMargin='" + openOrderInitialMargin + '\'' +
-                ", positionInitialMargin='" + positionInitialMargin + '\'' +
-                ", symbol='" + symbol + '\'' +
-                ", unrealizedProfit='" + unrealizedProfit + '\'' +
-                ", entryPrice='" + entryPrice + '\'' +
-                ", maxNotional='" + maxNotional + '\'' +
-                ", positionSide='" + positionSide + '\'' +
-                '}';
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("isolated", isolated)
+                .append("leverage", leverage)
+                .append("initialMargin", initialMargin)
+                .append("maintMargin", maintMargin)
+                .append("openOrderInitialMargin", openOrderInitialMargin)
+                .append("positionInitialMargin", positionInitialMargin)
+                .append("symbol", symbol)
+                .append("unrealizedProfit", unrealizedProfit)
+                .append("entryPrice", entryPrice)
+                .append("maxNotional", maxNotional)
+                .append("positionSide", positionSide)
+                .toString();
     }
 }

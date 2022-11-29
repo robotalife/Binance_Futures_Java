@@ -1,7 +1,7 @@
 package com.binance.client.model.market;
 
+import com.binance.client.impl.constant.BinanceApiConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 
 public class PriceChangeTicker {
@@ -168,7 +168,7 @@ public class PriceChangeTicker {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
                 .append("symbol", symbol)
                 .append("priceChange", priceChange)
                 .append("priceChangePercent", priceChangePercent)

@@ -1,6 +1,8 @@
 package com.binance.client.model.trade;
 
+import com.binance.client.impl.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Asset {
@@ -147,21 +149,21 @@ public class Asset {
 
     @Override
     public String toString() {
-        return "Asset{" +
-                "asset='" + asset + '\'' +
-                ", initialMargin='" + initialMargin + '\'' +
-                ", maintMargin='" + maintMargin + '\'' +
-                ", marginBalance='" + marginBalance + '\'' +
-                ", maxWithdrawAmount='" + maxWithdrawAmount + '\'' +
-                ", openOrderInitialMargin='" + openOrderInitialMargin + '\'' +
-                ", positionInitialMargin='" + positionInitialMargin + '\'' +
-                ", unrealizedProfit='" + unrealizedProfit + '\'' +
-                ", walletBalance='" + walletBalance + '\'' +
-                ", crossWalletBalance='" + crossWalletBalance + '\'' +
-                ", crossUnPnl='" + crossUnPnl + '\'' +
-                ", availableBalance='" + availableBalance + '\'' +
-                ", marginAvailable='" + marginAvailable + '\'' +
-                ", updateTime=" + updateTime +
-                '}';
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("asset", asset)
+                .append("initialMargin", initialMargin)
+                .append("maintMargin", maintMargin)
+                .append("marginBalance", marginBalance)
+                .append("maxWithdrawAmount", maxWithdrawAmount)
+                .append("openOrderInitialMargin", openOrderInitialMargin)
+                .append("positionInitialMargin", positionInitialMargin)
+                .append("unrealizedProfit", unrealizedProfit)
+                .append("walletBalance", walletBalance)
+                .append("crossWalletBalance", crossWalletBalance)
+                .append("crossUnPnl", crossUnPnl)
+                .append("availableBalance", availableBalance)
+                .append("marginAvailable", marginAvailable)
+                .append("updateTime", updateTime)
+                .toString();
     }
 }

@@ -1,7 +1,9 @@
 package com.binance.client.model.market;
 
 
+import com.binance.client.impl.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Filters define trading rules on a symbol or an exchange. Filters come in two forms: symbol filters and exchange filters.
@@ -158,5 +160,21 @@ public class SymbolFilter {
 
     public void setLimit(String limit) {
         this.limit = limit;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("filterType", filterType)
+                .append("minPrice", minPrice)
+                .append("maxPrice", maxPrice)
+                .append("tickSize", tickSize)
+                .append("minQty", minQty)
+                .append("maxQty", maxQty)
+                .append("stepSize", stepSize)
+                .append("notional", notional)
+                .append("maxNumAlgoOrders", maxNumAlgoOrders)
+                .append("limit", limit)
+                .toString();
     }
 }

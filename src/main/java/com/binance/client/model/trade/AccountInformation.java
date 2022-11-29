@@ -1,6 +1,8 @@
 package com.binance.client.model.trade;
 
+import com.binance.client.impl.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -230,22 +232,22 @@ public class AccountInformation {
 
     @Override
     public String toString() {
-        return "AccountInformation{" +
-                "feeTier='" + feeTier + '\'' +
-                ", canTrade=" + canTrade +
-                ", canDeposit=" + canDeposit +
-                ", canWithdraw=" + canWithdraw +
-                ", maxWithdrawAmount='" + maxWithdrawAmount + '\'' +
-                ", totalInitialMargin='" + totalInitialMargin + '\'' +
-                ", totalMaintMargin='" + totalMaintMargin + '\'' +
-                ", totalMarginBalance='" + totalMarginBalance + '\'' +
-                ", totalOpenOrderInitialMargin='" + totalOpenOrderInitialMargin + '\'' +
-                ", totalPositionInitialMargin='" + totalPositionInitialMargin + '\'' +
-                ", totalUnrealizedProfit='" + totalUnrealizedProfit + '\'' +
-                ", totalWalletBalance='" + totalWalletBalance + '\'' +
-                ", updateTime=" + updateTime +
-                ", assets=" + assets +
-                ", positions=" + positions +
-                '}';
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("feeTier", feeTier)
+                .append("canTrade", canTrade)
+                .append("canDeposit", canDeposit)
+                .append("canWithdraw", canWithdraw)
+                .append("maxWithdrawAmount", maxWithdrawAmount)
+                .append("totalInitialMargin", totalInitialMargin)
+                .append("totalMaintMargin", totalMaintMargin)
+                .append("totalMarginBalance", totalMarginBalance)
+                .append("totalOpenOrderInitialMargin", totalOpenOrderInitialMargin)
+                .append("totalPositionInitialMargin", totalPositionInitialMargin)
+                .append("totalUnrealizedProfit", totalUnrealizedProfit)
+                .append("totalWalletBalance", totalWalletBalance)
+                .append("updateTime", updateTime)
+                .append("assets", assets)
+                .append("positions", positions)
+                .toString();
     }
 }
