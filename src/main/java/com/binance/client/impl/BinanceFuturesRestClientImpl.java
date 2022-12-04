@@ -1,10 +1,17 @@
 package com.binance.client.impl;
 
 import com.binance.client.BinanceFuturesRestClient;
+import com.binance.client.model.enums.NewOrderRespType;
+import com.binance.client.model.enums.OrderSide;
+import com.binance.client.model.enums.OrderType;
+import com.binance.client.model.enums.PositionSide;
+import com.binance.client.model.enums.TimeInForce;
+import com.binance.client.model.enums.WorkingType;
 import com.binance.client.model.market.ExchangeInformation;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
+import com.binance.client.model.trade.Order;
 
 import java.util.List;
 
@@ -97,15 +104,16 @@ public class BinanceFuturesRestClientImpl implements BinanceFuturesRestClient {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.postBatchOrders(batchOrders));
 //    }
 //
-//    @Override
-//    public Order postOrder(String symbol, OrderSide side, PositionSide positionSide, OrderType orderType,
-//                           TimeInForce timeInForce, String quantity, String price, String reduceOnly,
-//                           String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType) {
-//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.postOrder(symbol, side, positionSide, orderType,
-//                timeInForce, quantity, price, reduceOnly,
-//                newClientOrderId, stopPrice, workingType, newOrderRespType));
-//    }
-//
+    @Override
+    public Order postOrder(String symbol, OrderSide side, PositionSide positionSide, OrderType orderType,
+                           TimeInForce timeInForce, String quantity, String price, String reduceOnly,
+                           String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType) {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.postOrder(symbol, side, positionSide, orderType,
+                timeInForce, quantity, price, reduceOnly,
+                newClientOrderId, stopPrice, workingType, newOrderRespType));
+    }
+
+    //
 //    @Override
 //    public Order cancelOrder(String symbol, Long orderId, String origClientOrderId) {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.cancelOrder(symbol, orderId, origClientOrderId));

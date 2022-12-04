@@ -1,9 +1,16 @@
 package com.binance.client;
 
+import com.binance.client.model.enums.NewOrderRespType;
+import com.binance.client.model.enums.OrderSide;
+import com.binance.client.model.enums.OrderType;
+import com.binance.client.model.enums.PositionSide;
+import com.binance.client.model.enums.TimeInForce;
+import com.binance.client.model.enums.WorkingType;
 import com.binance.client.model.market.ExchangeInformation;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
+import com.binance.client.model.trade.Order;
 
 import java.util.List;
 
@@ -126,14 +133,14 @@ public interface BinanceFuturesRestClient {
 //    List<Object> postBatchOrders(String batchOrders);
 //
 
-//    /**
-//     * Send in a new order.
-//     *
-//     * @return Order.
-//     */
-//    Order postOrder(String symbol, OrderSide side, PositionSide positionSide, OrderType orderType,
-//                    TimeInForce timeInForce, String quantity, String price, String reduceOnly,
-//                    String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType);
+    /**
+     * Send in a new order.
+     *
+     * @return Order.
+     */
+    Order postOrder(String symbol, OrderSide side, PositionSide positionSide, OrderType orderType,
+                    TimeInForce timeInForce, String quantity, String price, String reduceOnly,
+                    String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType);
 //
 //    /**
 //     * Cancel an active order.
@@ -212,6 +219,7 @@ public interface BinanceFuturesRestClient {
 //     * @return Open orders.
 //     */
 //    List<Order> getOpenOrders(String symbol);
+//
 //
 //    /**
 //     * Get all account orders; active, canceled, or filled.
