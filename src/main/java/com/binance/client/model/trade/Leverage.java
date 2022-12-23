@@ -9,7 +9,7 @@ public class Leverage {
 
     private BigDecimal leverage;
 
-    private Double maxNotionalValue;
+    private BigDecimal maxNotionalValue;
 
     private String symbol;
 
@@ -21,11 +21,11 @@ public class Leverage {
         this.leverage = leverage;
     }
 
-    public Double getMaxNotionalValue() {
+    public BigDecimal getMaxNotionalValue() {
         return maxNotionalValue;
     }
 
-    public void setMaxNotionalValue(Double maxNotionalValue) {
+    public void setMaxNotionalValue(BigDecimal maxNotionalValue) {
         this.maxNotionalValue = maxNotionalValue;
     }
 

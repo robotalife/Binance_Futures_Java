@@ -1,6 +1,7 @@
 package com.binance.client.impl;
 
 import com.binance.client.impl.constant.BinanceApiConstants;
+import com.binance.client.model.ResponseResult;
 import com.binance.client.model.enums.NewOrderRespType;
 import com.binance.client.model.enums.OrderSide;
 import com.binance.client.model.enums.OrderType;
@@ -11,6 +12,7 @@ import com.binance.client.model.market.ExchangeInformation;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
+import com.binance.client.model.trade.Leverage;
 import com.binance.client.model.trade.Order;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -41,6 +43,7 @@ public interface BinanceFuturesApiService {
     @GET("/fapi/v1/ticker/24hr")
     Call<PriceChangeTicker> get24hrTickerPriceChange(@Query("symbol") String symbol);
 
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @POST("/fapi/v1/order")
     Call<Order> postOrder(@Query("symbol") String symbol,
                           @Query("side") OrderSide side,
@@ -53,5 +56,18 @@ public interface BinanceFuturesApiService {
                           @Query("newClientOrderId") String newClientOrderId,
                           @Query("stopPrice") String stopPrice,
                           @Query("workingType") WorkingType workingType,
-                          @Query("newOrderRespType") NewOrderRespType newOrderRespType);
+                          @Query("newOrderRespType") NewOrderRespType newOrderRespType,
+                          @Query("timestamp") Long timestamp);
+
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @POST("/fapi/v1/leverage")
+    Call<Leverage> changeInitialLeverage(@Query("symbol") String symbol,
+                                         @Query("leverage") int leverageValue,
+                                         @Query("timestamp") Long timestamp);
+
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @POST("/fapi/v1/marginType")
+    Call<ResponseResult> changeMarginType(@Query("symbol") String symbol,
+                                          @Query("marginType") String marginType,
+                                          @Query("timestamp") Long timestamp);
 }

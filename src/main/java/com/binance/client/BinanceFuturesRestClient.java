@@ -1,5 +1,6 @@
 package com.binance.client;
 
+import com.binance.client.model.ResponseResult;
 import com.binance.client.model.enums.NewOrderRespType;
 import com.binance.client.model.enums.OrderSide;
 import com.binance.client.model.enums.OrderType;
@@ -10,6 +11,7 @@ import com.binance.client.model.market.ExchangeInformation;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
+import com.binance.client.model.trade.Leverage;
 import com.binance.client.model.trade.Order;
 
 import java.util.List;
@@ -170,13 +172,15 @@ public interface BinanceFuturesRestClient {
 //     */
 //    ResponseResult changePositionSide(boolean dual);
 //
-//    /**
-//     * Change margin type (ISOLATED, CROSSED)
-//     * @param symbolName
-//     * @param marginType
-//     * @return
-//     */
-//    ResponseResult changeMarginType(String symbolName, String marginType);
+
+    /**
+     * Change margin type (ISOLATED, CROSSED)
+     *
+     * @param symbolName
+     * @param marginType
+     * @return
+     */
+    ResponseResult changeMarginType(String symbolName, String marginType);
 //
 //    /**
 //     * add isolated position margin
@@ -241,13 +245,13 @@ public interface BinanceFuturesRestClient {
      * @return Current account information.
      */
     AccountInformation getAccountInformation();
-//
-//    /**
-//     * Change initial leverage.
-//     *
-//     * @return Leverage.
-//     */
-//    Leverage changeInitialLeverage(String symbol, Integer leverage);
+
+    /**
+     * Change initial leverage.
+     *
+     * @return Leverage.
+     */
+    Leverage changeInitialLeverage(String symbol, Integer leverage);
 //
 //    /**
 //     * Get position.

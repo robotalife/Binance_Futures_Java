@@ -1,6 +1,7 @@
 package com.binance.client.impl;
 
 import com.binance.client.BinanceFuturesRestClient;
+import com.binance.client.model.ResponseResult;
 import com.binance.client.model.enums.NewOrderRespType;
 import com.binance.client.model.enums.OrderSide;
 import com.binance.client.model.enums.OrderType;
@@ -11,6 +12,7 @@ import com.binance.client.model.market.ExchangeInformation;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
+import com.binance.client.model.trade.Leverage;
 import com.binance.client.model.trade.Order;
 
 import java.util.List;
@@ -110,7 +112,7 @@ public class BinanceFuturesRestClientImpl implements BinanceFuturesRestClient {
                            String newClientOrderId, String stopPrice, WorkingType workingType, NewOrderRespType newOrderRespType) {
         return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.postOrder(symbol, side, positionSide, orderType,
                 timeInForce, quantity, price, reduceOnly,
-                newClientOrderId, stopPrice, workingType, newOrderRespType));
+                newClientOrderId, stopPrice, workingType, newOrderRespType, System.currentTimeMillis()));
     }
 
     //
@@ -134,11 +136,12 @@ public class BinanceFuturesRestClientImpl implements BinanceFuturesRestClient {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.changePositionSide(dual));
 //    }
 //
-//    @Override
-//    public ResponseResult changeMarginType(String symbolName, String marginType) {
-//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.changeMarginType(symbolName, marginType));
-//    }
-//
+    @Override
+    public ResponseResult changeMarginType(String symbolName, String marginType) {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.changeMarginType(symbolName, marginType, System.currentTimeMillis()));
+    }
+
+    //
 //    @Override
 //    public JSONObject addIsolatedPositionMargin(String symbolName, int type, String amount, PositionSide positionSide) {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.addPositionMargin(symbolName, type, amount, positionSide));
@@ -179,11 +182,11 @@ public class BinanceFuturesRestClientImpl implements BinanceFuturesRestClient {
     public AccountInformation getAccountInformation() {
         return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getAccountInformation(System.currentTimeMillis()));
     }
-//
-//    @Override
-//    public Leverage changeInitialLeverage(String symbol, Integer leverage) {
-//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.changeInitialLeverage(symbol, leverage));
-//    }
+
+    @Override
+    public Leverage changeInitialLeverage(String symbol, Integer leverage) {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.changeInitialLeverage(symbol, leverage, System.currentTimeMillis()));
+    }
 //
 //    @Override
 //    public List<PositionRisk> getPositionRisk() {
