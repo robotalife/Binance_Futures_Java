@@ -8,6 +8,7 @@ import com.binance.client.model.enums.PositionSide;
 import com.binance.client.model.enums.TimeInForce;
 import com.binance.client.model.enums.WorkingType;
 import com.binance.client.model.market.ExchangeInformation;
+import com.binance.client.model.market.MarkPrice;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
@@ -69,12 +70,12 @@ public interface BinanceFuturesRestClient {
 //    List<Candlestick> getCandlestick(String symbol, CandlestickInterval interval, Long startTime, Long endTime, Integer limit);
 //
 
-//    /**
-//     * Get mark price for a symbol.
-//     *
-//     * @return Mark price for a symbol.
-//     */
-//    List<MarkPrice> getMarkPrice(String symbol);
+    /**
+     * Get mark price for a symbol.
+     *
+     * @return Mark price for a symbol.
+     */
+    MarkPrice getMarkPrice(String symbol);
 //
 //    /**
 //     * Get funding rate history.
@@ -210,12 +211,13 @@ public interface BinanceFuturesRestClient {
 //     */
 //    JSONObject getPositionSide();
 //
-//    /**
-//     * Check an order's status.
-//     *
-//     * @return Order status.
-//     */
-//    Order getOrder(String symbol, Long orderId, String origClientOrderId);
+
+    /**
+     * Check an order's status.
+     *
+     * @return Order status.
+     */
+    Order queryOrder(String symbol, Long orderId);
 //
 //    /**
 //     * Get all open orders on a symbol. Careful when accessing this with no symbol.
@@ -238,6 +240,24 @@ public interface BinanceFuturesRestClient {
 //     * @return Balances.
 //     */
 //    List<AccountBalance> getBalance();
+
+    //
+//    @Override
+//    public JSONObject addIsolatedPositionMargin(String symbolName, int type, String amount, PositionSide positionSide) {
+//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.addPositionMargin(symbolName, type, amount, positionSide));
+//    }
+//
+//    @Override
+//    public List<WalletDeltaLog> getPositionMarginHistory(String symbolName, int type, long startTime, long endTime, int limit) {
+//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getPositionMarginHistory(symbolName, type, startTime, endTime, limit));
+//    }
+//
+//
+//    @Override
+//    public JSONObject getPositionSide() {
+//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getPositionSide());
+//    }
+//
 
     /**
      * Get current account information.

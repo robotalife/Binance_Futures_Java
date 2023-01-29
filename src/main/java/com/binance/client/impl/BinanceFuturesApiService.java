@@ -9,6 +9,7 @@ import com.binance.client.model.enums.PositionSide;
 import com.binance.client.model.enums.TimeInForce;
 import com.binance.client.model.enums.WorkingType;
 import com.binance.client.model.market.ExchangeInformation;
+import com.binance.client.model.market.MarkPrice;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
@@ -70,4 +71,13 @@ public interface BinanceFuturesApiService {
     Call<ResponseResult> changeMarginType(@Query("symbol") String symbol,
                                           @Query("marginType") String marginType,
                                           @Query("timestamp") Long timestamp);
+
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/fapi/v1/order")
+    Call<Order> queryOrder(@Query("symbol") String symbol,
+                           @Query("orderId") Long orderId,
+                           @Query("timestamp") Long timestamp);
+
+    @GET("/fapi/v1/premiumIndex")
+    Call<MarkPrice> getMarkPrice(@Query("symbol") String symbol);
 }

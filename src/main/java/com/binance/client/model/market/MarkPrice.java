@@ -1,10 +1,12 @@
 package com.binance.client.model.market;
 
 import com.binance.client.impl.constant.BinanceApiConstants;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.math.BigDecimal;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MarkPrice {
 
     private String symbol;

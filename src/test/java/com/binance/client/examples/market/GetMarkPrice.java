@@ -1,14 +1,11 @@
-//package com.binance.client.examples.market;
-//
-//import com.binance.client.BinanceFuturesRestClient;
-//
-//import com.binance.client.examples.constants.PrivateConfig;
-//
-//public class GetMarkPrice {
-//    public static void main(String[] args) {
-//        RequestOptions options = new RequestOptions();
-//        BinanceFuturesRestClient binanceFuturesRestClient = BinanceFuturesRestClient.create(PrivateConfig.API_KEY, PrivateConfig.SECRET_KEY,
-//                options);
-//        System.out.println(binanceFuturesRestClient.getMarkPrice(""));
-//    }
-//}
+package com.binance.client.examples.market;
+
+import com.binance.client.BinanceFuturesApiClientFactory;
+import com.binance.client.BinanceFuturesRestClient;
+
+public class GetMarkPrice {
+    public static void main(String[] args) {
+        BinanceFuturesRestClient binanceFuturesRestClient = BinanceFuturesApiClientFactory.newInstance().newRestClient();
+        System.out.println(binanceFuturesRestClient.getMarkPrice("BNBUSDT"));
+    }
+}

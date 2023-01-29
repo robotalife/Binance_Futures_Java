@@ -41,6 +41,8 @@ public class Order {
 
     private String workingType;
 
+    private BigDecimal avgPrice;
+
     public String getClientOrderId() {
         return clientOrderId;
     }
@@ -169,6 +171,14 @@ public class Order {
         this.workingType = workingType;
     }
 
+    public BigDecimal getAvgPrice() {
+        return avgPrice;
+    }
+
+    public void setAvgPrice(BigDecimal avgPrice) {
+        this.avgPrice = avgPrice;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
@@ -176,6 +186,9 @@ public class Order {
                 .append("orderId", orderId).append("origQty", origQty).append("price", price)
                 .append("reduceOnly", reduceOnly).append("side", side).append("positionSide", positionSide).append("status", status)
                 .append("stopPrice", stopPrice).append("symbol", symbol).append("timeInForce", timeInForce)
-                .append("type", type).append("updateTime", updateTime).append("workingType", workingType).toString();
+                .append("type", type).append("updateTime", updateTime).append("workingType", workingType)
+                .append("avgPrice", avgPrice)
+                .toString()
+                ;
     }
 }

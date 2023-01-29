@@ -9,6 +9,7 @@ import com.binance.client.model.enums.PositionSide;
 import com.binance.client.model.enums.TimeInForce;
 import com.binance.client.model.enums.WorkingType;
 import com.binance.client.model.market.ExchangeInformation;
+import com.binance.client.model.market.MarkPrice;
 import com.binance.client.model.market.PriceChangeTicker;
 import com.binance.client.model.market.SymbolPrice;
 import com.binance.client.model.trade.AccountInformation;
@@ -60,11 +61,12 @@ public class BinanceFuturesRestClientImpl implements BinanceFuturesRestClient {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getCandlestick(symbol, interval, startTime, endTime, limit));
 //    }
 //
-//    @Override
-//    public List<MarkPrice> getMarkPrice(String symbol) {
-//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getMarkPrice(symbol));
-//    }
-//
+    @Override
+    public MarkPrice getMarkPrice(String symbol) {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getMarkPrice(symbol));
+    }
+
+    //
 //    @Override
 //    public List<FundingRate> getFundingRate(String symbol, Long startTime, Long endTime, Integer limit) {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getFundingRate(symbol, startTime, endTime, limit));
@@ -158,11 +160,18 @@ public class BinanceFuturesRestClientImpl implements BinanceFuturesRestClient {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getPositionSide());
 //    }
 //
-//    @Override
-//    public Order getOrder(String symbol, Long orderId, String origClientOrderId) {
-//        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getOrder(symbol, orderId, origClientOrderId));
-//    }
-//
+
+    /**
+     * @param symbol
+     * @param orderId
+     * @return <code>com.binance.client.model.trade.Order</code>
+     */
+    @Override
+    public Order queryOrder(String symbol, Long orderId) {
+        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.queryOrder(symbol, orderId, System.currentTimeMillis()));
+    }
+
+    //
 //    @Override
 //    public List<Order> getOpenOrders(String symbol) {
 //        return BinanceFuturesApiServiceGenerator.callSync(binanceFuturesApiService.getOpenOrders(symbol));
