@@ -61,6 +61,8 @@ public class ExchangeInfoEntry {
 
     private List<SymbolFilter> filters;
 
+    private ContractType contractType;
+
     public String getSymbol() {
         return symbol;
     }
@@ -165,6 +167,14 @@ public class ExchangeInfoEntry {
         this.filters = filters;
     }
 
+    public ContractType getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(ContractType contractType) {
+        this.contractType = contractType;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE).append("symbol", symbol)
@@ -173,6 +183,21 @@ public class ExchangeInfoEntry {
                 .append("quoteAsset", quoteAsset).append("pricePrecision", pricePrecision)
                 .append("quantityPrecision", quantityPrecision).append("baseAssetPrecision", baseAssetPrecision)
                 .append("quotePrecision", quotePrecision).append("orderTypes", orderTypes)
-                .append("timeInForce", timeInForce).append("filters", filters).toString();
+                .append("timeInForce", timeInForce).append("filters", filters).append("contractType", contractType).toString();
+    }
+
+    public enum ContractType {
+        PERPETUAL("PERPETUAL"),
+        CURRENT_QUARTER("CURRENT_QUARTER");
+
+        private final String type;
+
+        ContractType(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
     }
 }
